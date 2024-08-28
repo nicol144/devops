@@ -40,7 +40,7 @@ pipeline {
                 script {
                     // Applying the Kubernetes deployment configuration
                     withCredentials([file(credentialsId: KUBECONFIG_CREDENTIALS_ID, variable: 'KUBECONFIG')]) {
-                        sh 'kubectl apply -f deployment.yaml'
+                        sh 'kubectl apply -f /root/deployment.yaml'
                     }
                 }
             }
