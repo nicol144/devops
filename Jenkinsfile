@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/your-repo/apache-webpage.git'
+                git 'https://github.com/nicol144/devops.git'
             }
         }
 
