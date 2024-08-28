@@ -27,9 +27,11 @@ pipeline {
         stage('Push Docker Image') {
             steps {
                 script {
-                    // Tagging the image with the 'latest' tag
-                    dockerImage.push("${env.BUILD_NUMBER}")
-                    dockerImage.push("latest")
+                    // Logging in to Docker registry and pushing the Docker image
+                    docker.withRegistry('https://index.docker.io/v1/', DOCKER_CREDENTIALS_ID) {
+                        dockerImage.push("${env.BUILD_NUMBER}")  // Pushing the image with the build number tag
+                        dockerImage.push("latest")               // Pushing the image with the 'latest' tag
+                    }
                 }
             }
         }
