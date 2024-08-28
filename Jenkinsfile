@@ -10,14 +10,15 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
+                // Cloning the repository and specifying the branch name explicitly
                 git url: 'https://github.com/nicol144/devops.git', branch: 'main'
-
             }
         }
 
         stage('Build Docker Image') {
             steps {
                 script {
+                    // Building the Docker image with a unique tag based on the build number
                     dockerImage = docker.build("${DOCKER_IMAGE}:${env.BUILD_NUMBER}")
                 }
             }
@@ -26,7 +27,8 @@ pipeline {
         stage('Push Docker Image') {
             steps {
                 script {
-                    docker.withRegistry('', DOCKER_CREDENTIALS_ID) {
+                    // Logging in to Docker registry and pushing the Docker image
+                    docker.withRegistry('https://index.docker.io/v1/', DOCKER_CREDENTIALS_ID) {
                         dockerImage.push()
                     }
                 }
@@ -36,6 +38,7 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
                 script {
+                    // Applying the Kubernetes deployment configuration
                     withCredentials([file(credentialsId: KUBECONFIG_CREDENTIALS_ID, variable: 'KUBECONFIG')]) {
                         sh 'kubectl apply -f deployment.yaml'
                     }
