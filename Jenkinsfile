@@ -2,9 +2,9 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_CREDENTIALS_ID = 'dockerhub-credentials-id'
-        DOCKER_IMAGE = 'your-dockerhub-username/apache-webpage'
-        KUBECONFIG_CREDENTIALS_ID = 'kubeconfig-credentials-id'
+        DOCKER_CREDENTIALS_ID = 'docker1'
+        DOCKER_IMAGE = 'adi144/apache-webpage'
+        KUBECONFIG_CREDENTIALS_ID = 'kubernetes'
     }
 
     stages {
@@ -36,7 +36,7 @@ pipeline {
             steps {
                 script {
                     withCredentials([file(credentialsId: KUBECONFIG_CREDENTIALS_ID, variable: 'KUBECONFIG')]) {
-                        sh 'kubectl apply -f k8s/deployment.yaml'
+                        sh 'kubectl apply -f deployment.yaml'
                     }
                 }
             }
