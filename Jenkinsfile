@@ -9,11 +9,12 @@ pipeline {
         NEXUS_REPOSITORY = 'http://3.84.129.174:8081/repository/maven-releases/'  // Nexus repository URL
     }
 
-    stages {
-        stage('Checkout') {
+    stage('Checkout') {
             steps {
-                // Checkout the code from your Git repository
-                git 'https://github.com/nicol144/devops.git'
+                // Perform the Git checkout with specified parameters
+                git branch: 'main', 
+                    credentialsId: '6a1fa75d-070b-4816-a291-00f99206b51a', 
+                    url: 'https://github.com/nicol144/devops.git'
             }
         }
 
