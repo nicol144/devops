@@ -9,7 +9,8 @@ pipeline {
         NEXUS_REPOSITORY = 'http://3.84.129.174:8081/repository/maven-releases/'  // Nexus repository URL
     }
 
-    stage('Checkout') {
+    stages {
+        stage('Checkout') {
             steps {
                 // Perform the Git checkout with specified parameters
                 git branch: 'main', 
