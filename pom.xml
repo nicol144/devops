@@ -18,4 +18,11 @@
   <build>
     <finalName>microservice-one</finalName>
   </build>
+  <distributionManagement>
+    <snapshotRepository>
+      <id>adi-repo</id>
+      <url>http://18.234.108.78:8081/repository/adi-repo/</url>
+    </snapshotRepository>
+      
+  </distributionManagement>
 </project>
