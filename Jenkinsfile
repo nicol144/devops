@@ -11,7 +11,7 @@
 		stages {
 			stage('Clone the git repository') {
 				steps {
-				  git branch: 'build-jenkinsfile', credentialsId: 'github-credentials', url: 'https://github.com/techworldwithmurali/microservice-one.git'
+				  git branch: 'build-jenkinsfile', credentialsId: 'github-credentials', url: 'https://github.com/nicol144/devops.git'
 				  
 				}
 			}
