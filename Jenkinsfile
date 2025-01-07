@@ -2,7 +2,7 @@ pipeline {
     agent any
     tools {
         maven 'maven'
-        sonarQubeScanner 'sonar'
+        sonarRunnerInstallation 'sonar'
     }
 
     
