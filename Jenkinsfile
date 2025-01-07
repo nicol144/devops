@@ -2,7 +2,7 @@ pipeline {
     agent any
     tools {
         maven 'maven'
-        hudson.plugins.sonar.SonarRunnerInstallation 'sonar'
+        
     }
 
     
@@ -23,7 +23,7 @@ pipeline {
         stage('Static code analysis') {
             steps {
         withSonarQubeEnv('sonar') {
-                    sh 'sonar -Dproject.settings=sonar.properties'
+                    sh 'sonar-scanner -Dproject.settings=sonar.properties'
                 }
                 }
                 
