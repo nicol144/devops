@@ -3,7 +3,7 @@ pipeline {
     agent any  // Use 'any' for Jenkins to choose an available agent (you can set this to a specific label if needed)
     
     tools {
-        maven   // Ensure Maven is configured in Jenkins
+        maven "3.9.9"   // Ensure Maven is configured in Jenkins
     }
 
     stages {
