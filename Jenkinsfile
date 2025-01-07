@@ -1,26 +1,24 @@
 
+pipeline {
+    agent any  // Use 'any' for Jenkins to choose an available agent (you can set this to a specific label if needed)
+    
+    tools {
+        maven "Maven-3.9.9"  // Ensure Maven is configured in Jenkins
+    }
 
-	pipeline {
-		agent {
-			label 'Java-17'
-		}
-		tools {
-			maven "Maven-3.9.9"
-		}
-
-		stages {
-			stage('Clone the git repository') {
-				steps {
-				  git branch: 'build-jenkinsfile', credentialsId: 'github-credentials', url: 'https://github.com/nicol144/devops.git'
-				  
-				}
-			}
-			
-			stage('Build the code'){
-				steps {
-					sh 'mvn clean package'
-				}
-				
-			}
-		}
-	}
+    stages {
+        stage('Clone the Git repository') {
+            steps {
+                // Ensure 'github-credentials' is correctly set up in Jenkins
+                git branch: 'build-jenkinsfile', credentialsId: 'github-credentials', url: 'https://github.com/nicol144/devops.git'
+            }
+        }
+        
+        stage('Build the code') {
+            steps {
+                // Run Maven build command
+                sh 'mvn clean package'
+            }
+        }
+    }
+}
