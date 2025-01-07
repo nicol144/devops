@@ -1,5 +1,7 @@
 pipeline {
     agent any  // This should be inside the pipeline block
+    tools {
+        maven 'maven'
 
     stages {
         stage('Clone the repository') {
