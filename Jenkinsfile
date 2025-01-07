@@ -21,7 +21,7 @@ pipeline {
         
         stage('Static code analysis') {
             steps {
-        withSonarQubeEnv('sonarqube') {
+        withSonarQubeEnv('sonar') {
                     sh 'sonar -Dproject.settings=sonar.properties'
                 }
                 }
