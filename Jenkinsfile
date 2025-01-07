@@ -23,7 +23,7 @@ pipeline {
         stage('Static code analysis') {
             steps {
         withSonarQubeEnv('sonar') {
-                    sh 'mvn sonar:sonar'
+                    sh 'mvn sonar:sonar -Dsonar.sonar.host.url=http://54.167.10.112:9000/ -Dsonar.login=9b0aed2124540ca67ec960ab3d455e32a200bff3  '
                 }
                 }
                 
