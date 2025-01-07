@@ -23,7 +23,7 @@ pipeline {
         stage('Static code analysis') {
             steps {
         withSonarQubeEnv('sonar') {
-                    sh 'sonar-scanner -Dproject.settings=sonar.properties'
+                    sh 'mvn sonar:sonar'
                 }
                 }
                 
