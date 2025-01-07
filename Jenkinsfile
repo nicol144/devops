@@ -14,17 +14,6 @@ pipeline {
             }
         }
         
-        stage('Push the artifacts into Nexus artifactory') {
-            steps {
-                nexusArtifactUploader artifacts: [[artifactId: 'microservice-one', classifier: '', file: 'target/microservice-one.war', type: 'war']], 
-                                      credentialsId: '5825da7b-5429-4562-8c7b-373f35df4ab3', 
-                                      groupId: 'com.techworldwithmurali', 
-                                      nexusUrl: '18.234.108.78:8081/', 
-                                      nexusVersion: 'nexus3', 
-                                      protocol: 'http', 
-                                      repository: 'adi-repo1', 
-                                      version: '1.0-SNAPSHOT'
-            }
-        }
+       
     }
 }
