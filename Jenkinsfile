@@ -1,13 +1,12 @@
 pipeline {
-    agent {
-        label 'Java-17'
+    agent any
 
     }
 
     stages {
          stage('Clone the repository'){
         steps{
-          git branch: 'static-code-analysis-jenkinsfile', credentialsId: 'github-credentials', url: 'https://github.com/techworldwithmurali/microservice-one.git'
+          git branch: 'static-code-analysis-jenkinsfile', credentialsId: '43a2b28e-66fd-4af9-8866-97130d12fe8a', url: 'https://github.com/nicol144/devops.git'
           
         } 
       }
